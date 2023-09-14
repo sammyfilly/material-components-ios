@@ -52,12 +52,12 @@ IMPORT_RE = re.compile(r'#import (\"(.*\.h)\"|\<(.*\.h)\>)')
 
 def umbrella_header(component):
     """Returns an umbrella header for the component."""
-    return '{}{}.h'.format(UMBRELLA_HEADER_PREFIX, component)
+    return f'{UMBRELLA_HEADER_PREFIX}{component}.h'
 
 
 def framework_umbrella_header(component):
     """Returns a framework umbrella header for the component."""
-    return 'MaterialComponents/{}'.format(umbrella_header(component))
+    return f'MaterialComponents/{umbrella_header(component)}'
 
 
 # Context in which the check is executed.
@@ -155,7 +155,7 @@ def imports_in_file(file_path):
     """Returns a list of import strings."""
     imports = []
     with open(file_path) as f:
-        for line in f.readlines():
+        for line in f:
             match = IMPORT_RE.match(line)
             if not match:
                 # No imports found in file.
