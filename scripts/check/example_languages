@@ -64,10 +64,10 @@ def main():
              "Swift code.") % readme
       sys.exit(-1)
 
-    # Check each pair of examples has swift before objc.
     elif not (swiftMatch.start() < objcMatch.start()):
-      print ("Error: '{}' has an Objc example before a Swift "
-             "example:\n{}".format(readme, example))
+      print(
+          f"Error: '{readme}' has an Objc example before a Swift example:\n{example}"
+      )
       sys.exit(-1)
 
   # Check that no example code appears outside of an example stanza.
